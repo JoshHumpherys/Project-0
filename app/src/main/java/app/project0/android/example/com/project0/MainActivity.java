@@ -35,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            toast.setText("No settings to show");
+            toast.show();
             return true;
         }
 
