@@ -1,17 +1,22 @@
 package app.project0.android.example.com.project0;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toast = new Toast(this).makeText(this, "", Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -34,5 +39,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendMessage(View view) {
+        // set text to the button's tag except if button 6, display "my own app" instead
+        toast.setText("This button will launch " + (view.getId() == R.id.button_6 ?
+                "my own app" : view.getTag().toString()) + "!");
+        toast.show();
     }
 }
